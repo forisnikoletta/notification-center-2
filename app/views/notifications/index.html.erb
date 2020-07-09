@@ -1,0 +1,8 @@
+<p id="notice">Signed in as: <%= current_user.first_name %></p>
+
+<h1>Welcome</h1>
+
+<p><%= link_to 'Continue as a client >', client_path if logged_in?(:client) %></p>
+<p><%= link_to 'Continue as an admin >', admin_path if logged_in?(:admin) %></p>
+
+<br>

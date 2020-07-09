@@ -1,0 +1,7 @@
+<h1>Editing Notification</h1>
+
+<%= render 'form', notification: @notification %>
+
+<%= link_to 'Show', @notification %> |
+<%= link_to 'Back', admin_path if logged_in?(:admin)%>
+<%= link_to 'Back', client_path if logged_in?(:client)%>

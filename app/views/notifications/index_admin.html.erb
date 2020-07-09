@@ -1,0 +1,33 @@
+<p id="notice">Signed in as: <%= current_user.first_name %></p>
+
+<h1>Notifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>For User </th>
+      <th> Title </th>
+      <th> Body </th>
+      <th> Seen </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notifications_admin.each do |notification| %>
+      <tr>
+        <td><%= notification.users_id %></td>
+        <td><%= notification.title.upcase %></td>
+        <td><%= notification.body %></td>
+        <td><%= notification.seen %></td>
+        <td><%= link_to 'Show Details', notification if logged_in?(:admin, :client) %></td>
+        <td><%= link_to 'Edit', edit_notification_path(notification) if logged_in?(:admin) %></td>
+        <td><%= link_to 'Delete', notification, method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:admin, :client) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Create New Notification', new_notification_path if logged_in?(:admin) %>
